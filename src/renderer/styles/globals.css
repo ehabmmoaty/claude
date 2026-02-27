@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* RTL support for Arabic */
+  [dir='rtl'] {
+    text-align: right;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(156, 163, 175, 0.8);
+  }
+
+  /* RTL scrollbar placement */
+  [dir='rtl'] ::-webkit-scrollbar {
+    direction: rtl;
+  }
+
+  /* Electron window drag region */
+  .drag-region {
+    -webkit-app-region: drag;
+  }
+
+  .no-drag {
+    -webkit-app-region: no-drag;
+  }
+}
+
+@layer components {
+  /* Recording indicator pulse animation */
+  .recording-pulse {
+    animation: pulse-recording 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-recording {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Privacy pause indicator */
+  .privacy-shield {
+    animation: shield-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes shield-glow {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 8px rgba(234, 179, 8, 0);
+    }
+  }
+}
