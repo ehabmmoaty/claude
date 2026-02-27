@@ -3,6 +3,8 @@ import { useAppStore } from './stores/appStore';
 import { Sidebar } from './components/Sidebar';
 import { TitleBar } from './components/TitleBar';
 import { RecordingBar } from './components/RecordingBar';
+import { LiveTranscript } from './components/LiveTranscript';
+import { useRecordingStore } from './stores/recordingStore';
 import { LoginScreen } from './pages/LoginScreen';
 import { HomePage } from './pages/HomePage';
 import { ConversationsPage } from './pages/ConversationsPage';
@@ -56,14 +58,27 @@ export default function App() {
   }
 
   const ActivePage = PAGES[activeTab];
+  const recState = useRecordingStore((s) => s.recordingState);
+  const isRecordingActive = recState === 'recording' || recState === 'paused';
 
   return (
     <div className="flex h-screen flex-col overflow-hidden" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <TitleBar />
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
-        <main className="flex-1 overflow-y-auto bg-muted-light dark:bg-muted-dark">
-          <ActivePage />
+        <main className="flex flex-1 flex-col overflow-hidden bg-muted-light dark:bg-muted-dark">
+          <div className="flex-1 overflow-y-auto">
+            <ActivePage />
+          </div>
+          {/* Live transcript panel slides up during recording */}
+          {isRecordingActive && (
+            <div className="flex h-48 flex-col border-t border-gray-200 bg-surface-light dark:border-gray-700 dark:bg-surface-dark">
+              <div className="flex items-center justify-between border-b border-gray-100 px-4 py-2 dark:border-gray-800">
+                <span className="text-xs font-medium text-gray-500">Live Transcript</span>
+              </div>
+              <LiveTranscript />
+            </div>
+          )}
         </main>
       </div>
       <RecordingBar />

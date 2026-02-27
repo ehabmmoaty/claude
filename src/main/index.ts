@@ -5,6 +5,8 @@ import { registerHotkeys } from './hotkeys';
 import { initAuth, handleLogin, handleLogout, handleGetUser } from './auth/msal';
 import { initDatabase } from './database';
 import { initUpdater } from './updater';
+import { initAudioEngine } from './audio/audioEngine';
+import { initSystemAudio } from './audio/systemAudio';
 import { IPC_CHANNELS, RecordingState } from '../shared/types';
 
 let mainWindow: BrowserWindow | null = null;
@@ -27,6 +29,7 @@ function createWindow(): void {
       nodeIntegration: false,
       sandbox: false,
       webSecurity: true,
+      backgroundThrottling: false, // Keep audio processing when minimized
     },
     show: false,
   });
@@ -37,7 +40,7 @@ function createWindow(): void {
       responseHeaders: {
         ...details.responseHeaders,
         'Content-Security-Policy': [
-          "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.azure.com https://*.microsoft.com; img-src 'self' data:",
+          "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.azure.com https://*.microsoft.com https://*.cognitiveservices.azure.com wss://*.stt.speech.microsoft.com; img-src 'self' data:; media-src 'self' blob:",
         ],
       },
     });
@@ -87,6 +90,10 @@ app.whenReady().then(async () => {
   initAuth();
   setupIPC();
   createWindow();
+  if (mainWindow) {
+    initAudioEngine(mainWindow);
+  }
+  initSystemAudio();
   initTray(recordingState, mainWindow);
   registerHotkeys({
     onRecord: () => {

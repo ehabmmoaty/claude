@@ -7,11 +7,15 @@ const electronAPI = {
   logout: () => ipcRenderer.invoke(IPC_CHANNELS.AUTH_LOGOUT),
   getUser: () => ipcRenderer.invoke(IPC_CHANNELS.AUTH_GET_USER),
 
-  // Recording
-  startRecording: () => ipcRenderer.send(IPC_CHANNELS.RECORDING_START),
-  stopRecording: () => ipcRenderer.send(IPC_CHANNELS.RECORDING_STOP),
-  pauseRecording: () => ipcRenderer.send(IPC_CHANNELS.RECORDING_PAUSE),
-  privacyPause: () => ipcRenderer.send(IPC_CHANNELS.RECORDING_PRIVACY_PAUSE),
+  // Recording (invoke = request/response, send = fire-and-forget)
+  startRecording: (source?: string) =>
+    ipcRenderer.invoke(IPC_CHANNELS.RECORDING_START, source),
+  stopRecording: () => ipcRenderer.invoke(IPC_CHANNELS.RECORDING_STOP),
+  pauseRecording: () => ipcRenderer.invoke(IPC_CHANNELS.RECORDING_PAUSE),
+  privacyPause: () => ipcRenderer.invoke(IPC_CHANNELS.RECORDING_PRIVACY_PAUSE),
+  getAudioSavePath: (conversationId: string) =>
+    ipcRenderer.invoke(IPC_CHANNELS.AUDIO_SAVE_PATH, conversationId),
+  getDesktopSources: () => ipcRenderer.invoke('audio:get-desktop-sources'),
   onRecordingStateChanged: (callback: (state: RecordingState) => void) => {
     const handler = (_event: Electron.IpcRendererEvent, state: RecordingState) => callback(state);
     ipcRenderer.on(IPC_CHANNELS.RECORDING_STATE_CHANGED, handler);

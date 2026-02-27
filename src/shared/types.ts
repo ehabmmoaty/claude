@@ -66,6 +66,39 @@ export interface Speaker {
   conversationCount: number;
 }
 
+// ─── Audio & Recording Types ───
+
+export type AudioSource = 'microphone' | 'system' | 'both';
+
+export interface AudioConfig {
+  source: AudioSource;
+  sampleRate: number;
+  channels: number;
+}
+
+export interface RecordingSession {
+  id: string;
+  conversationId: string;
+  startedAt: string;
+  source: AudioSource;
+  audioPath: string | null;
+}
+
+export interface TranscriptionEvent {
+  type: 'interim' | 'final';
+  text: string;
+  language: 'ar' | 'en';
+  startTime: number;
+  endTime: number;
+  speakerId: string | null;
+  confidence: number;
+}
+
+export interface AudioLevelData {
+  level: number; // 0-1 normalized RMS
+  timestamp: number;
+}
+
 // ─── App State Types ───
 
 export type RecordingState = 'idle' | 'listening' | 'recording' | 'paused' | 'privacy_pause';
@@ -112,6 +145,15 @@ export const IPC_CHANNELS = {
   // Database
   DB_QUERY: 'db:query',
   DB_EXEC: 'db:exec',
+
+  // Audio
+  AUDIO_LEVEL: 'audio:level',
+  AUDIO_SAVE_PATH: 'audio:save-path',
+
+  // Transcription
+  TRANSCRIPTION_EVENT: 'transcription:event',
+  TRANSCRIPTION_START: 'transcription:start',
+  TRANSCRIPTION_STOP: 'transcription:stop',
 
   // App
   APP_GET_VERSION: 'app:get-version',

@@ -1,7 +1,7 @@
-import { useAppStore } from '../stores/appStore';
+import { useRecordingStore } from '../stores/recordingStore';
 
 export function TitleBar() {
-  const recordingState = useAppStore((s) => s.recordingState);
+  const recordingState = useRecordingStore((s) => s.recordingState);
 
   return (
     <header className="drag-region flex h-12 items-center justify-between border-b border-gray-200 bg-surface-light px-4 dark:border-gray-700 dark:bg-surface-dark">
