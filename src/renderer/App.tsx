@@ -11,7 +11,8 @@ import { ConversationsPage } from './pages/ConversationsPage';
 import { TasksPage } from './pages/TasksPage';
 import { AgentsPage } from './pages/AgentsPage';
 import { SearchPage } from './pages/SearchPage';
-import { electron } from './lib/electron';
+import { electron, isElectron } from './lib/electron';
+import { MOCK_USER } from './lib/webPreviewData';
 
 const PAGES = {
   home: HomePage,
@@ -28,14 +29,20 @@ export default function App() {
   const setRecordingState = useAppStore((s) => s.setRecordingState);
   const setAuthLoading = useAppStore((s) => s.setAuthLoading);
   const locale = useAppStore((s) => s.locale);
+  const recState = useRecordingStore((s) => s.recordingState);
 
-  // Check for existing auth session on mount
+  // Check for existing auth session on mount (or auto-login with mock in web preview)
   useEffect(() => {
     async function checkAuth() {
       setAuthLoading(true);
       try {
-        const existingUser = await electron?.getUser();
-        if (existingUser) setUser(existingUser);
+        if (!isElectron) {
+          // Web preview: auto-login with mock user
+          setUser(MOCK_USER);
+        } else {
+          const existingUser = await electron?.getUser();
+          if (existingUser) setUser(existingUser);
+        }
       } catch {
         // No cached session
       } finally {
@@ -58,7 +65,6 @@ export default function App() {
   }
 
   const ActivePage = PAGES[activeTab];
-  const recState = useRecordingStore((s) => s.recordingState);
   const isRecordingActive = recState === 'recording' || recState === 'paused';
 
   return (

@@ -30,5 +30,9 @@ nsis:
   perMachine: false
   allowToChangeInstallationDirectory: true
 publish:
-  provider: generic
-  url: https://updates.anees.gov.ae
+  - provider: github
+    owner: ehabmmoaty
+    repo: claude
+    releaseType: release
+  - provider: generic
+    url: https://updates.anees.gov.ae
