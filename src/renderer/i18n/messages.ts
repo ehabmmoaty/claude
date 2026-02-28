@@ -16,6 +16,7 @@ const en: MessageMap = {
   'home.noMeetings': 'No meetings scheduled',
   'home.quickActions': 'Quick Actions',
   'home.recentConversations': 'Recent Conversations',
+  'home.insights': 'Insights',
 
   // Recording
   'recording.start': 'Start Recording',
@@ -64,21 +65,48 @@ const en: MessageMap = {
 
   // Tasks
   'tasks.title': 'Tasks',
+  'tasks.subtitle': 'Tasks extracted from your conversations',
   'tasks.myTasks': 'My Tasks',
   'tasks.delegated': 'Delegated',
   'tasks.waitingOn': 'Waiting On',
   'tasks.empty': 'No tasks yet. Tasks will be extracted from your conversations.',
+  'tasks.search': 'Search tasks...',
+  'tasks.deleteConfirm': 'Are you sure you want to delete this task?',
+  'tasks.status.todo': 'To Do',
+  'tasks.status.in_progress': 'In Progress',
+  'tasks.status.done': 'Done',
+  'tasks.priority.low': 'Low',
+  'tasks.priority.medium': 'Medium',
+  'tasks.priority.high': 'High',
+  'tasks.priority.urgent': 'Urgent',
+  'tasks.priorityLabel': 'Priority',
+  'tasks.assignee': 'Assignee',
+  'tasks.dueDate': 'Due Date',
+  'tasks.created': 'Created',
 
   // Agents (Companions)
   'agents.title': 'Agents',
+  'agents.subtitle': 'AI companions that analyze your conversations',
   'agents.create': 'Create Agent',
   'agents.studio': 'Agent Studio',
   'agents.empty': 'Describe what kind of AI assistant you need.',
+  'agents.builtIn': 'Built-in Agents',
+  'agents.custom': 'Custom Agents',
+  'agents.conversations': '{count, plural, one {# conversation} other {# conversations}}',
+  'agents.description': 'Description',
+  'agents.descriptionAr': 'Description (Arabic)',
+  'agents.systemPrompt': 'System Prompt',
+  'agents.active': 'Active',
+  'agents.inactive': 'Inactive',
+  'agents.builtInNote': 'Built-in agent — cannot be deleted',
+  'agents.deleteConfirm': 'Are you sure you want to delete this agent?',
 
   // Search
   'search.title': 'Search',
   'search.placeholder': 'Search across all conversations, tasks, and agents...',
   'search.noResults': 'No results found',
+  'search.hint': 'Search across conversations, tasks, agents, and transcripts',
+  'search.transcripts': 'Transcripts',
 
   // Auth
   'auth.signIn': 'Sign in with ADGOV Account',
@@ -87,11 +115,35 @@ const en: MessageMap = {
 
   // Settings
   'settings.title': 'Settings',
+  'settings.profile': 'Profile',
+  'settings.appearance': 'Appearance',
   'settings.language': 'Language',
   'settings.theme': 'Theme',
   'settings.theme.light': 'Light',
   'settings.theme.dark': 'Dark',
   'settings.theme.system': 'System',
+  'settings.audio': 'Audio',
+  'settings.defaultMicrophone': 'Default Microphone',
+  'settings.systemDefault': 'System default',
+  'settings.systemAudio': 'System Audio Capture',
+  'settings.systemAudioEnabled': 'Available (desktop only)',
+  'settings.systemAudioUnavailable': 'Not available in web preview',
+  'settings.hotkeys': 'Keyboard Shortcuts',
+  'settings.hotkeysDesc': 'Cmd+Shift+R (Record) · Cmd+Shift+P (Privacy) · Cmd+Shift+A (Quick Ask)',
+  'settings.about': 'About',
+  'settings.version': 'Version {version}',
+
+  // Analytics
+  'analytics.totalConversations': 'Total Conversations',
+  'analytics.totalHours': 'Recording Hours',
+  'analytics.uniqueSpeakers': 'Unique Speakers',
+  'analytics.tasksExtracted': 'Tasks Extracted',
+  'analytics.weeklyActivity': 'Weekly Activity',
+  'analytics.topSpeakers': 'Top Speakers',
+  'analytics.languageBreakdown': 'Language Usage',
+  'analytics.taskCompletion': 'Task Completion',
+  'analytics.completionRate': 'completion rate',
+  'analytics.changeUp': '+{pct}% this month',
 
   // Common
   'common.loading': 'Loading...',
@@ -119,6 +171,7 @@ const ar: MessageMap = {
   'home.noMeetings': 'لا توجد اجتماعات مجدولة',
   'home.quickActions': 'إجراءات سريعة',
   'home.recentConversations': 'المحادثات الأخيرة',
+  'home.insights': 'الرؤى والتحليلات',
 
   // Recording
   'recording.start': 'بدء التسجيل',
@@ -167,21 +220,48 @@ const ar: MessageMap = {
 
   // Tasks
   'tasks.title': 'المهام',
+  'tasks.subtitle': 'المهام المستخرجة من محادثاتك',
   'tasks.myTasks': 'مهامي',
   'tasks.delegated': 'مهام مُفوَّضة',
   'tasks.waitingOn': 'في الانتظار',
   'tasks.empty': 'لا توجد مهام بعد. سيتم استخراج المهام من محادثاتك.',
+  'tasks.search': 'البحث في المهام...',
+  'tasks.deleteConfirm': 'هل أنت متأكد من حذف هذه المهمة؟',
+  'tasks.status.todo': 'للتنفيذ',
+  'tasks.status.in_progress': 'قيد التنفيذ',
+  'tasks.status.done': 'مكتملة',
+  'tasks.priority.low': 'منخفضة',
+  'tasks.priority.medium': 'متوسطة',
+  'tasks.priority.high': 'عالية',
+  'tasks.priority.urgent': 'عاجلة',
+  'tasks.priorityLabel': 'الأولوية',
+  'tasks.assignee': 'المكلف',
+  'tasks.dueDate': 'تاريخ الاستحقاق',
+  'tasks.created': 'تاريخ الإنشاء',
 
   // Agents (Companions)
   'agents.title': 'الوكلاء',
+  'agents.subtitle': 'وكلاء ذكاء اصطناعي يحللون محادثاتك',
   'agents.create': 'إنشاء وكيل',
   'agents.studio': 'استوديو الوكلاء',
   'agents.empty': 'صِف نوع المساعد الذكي الذي تحتاجه.',
+  'agents.builtIn': 'وكلاء مدمجون',
+  'agents.custom': 'وكلاء مخصصون',
+  'agents.conversations': '{count, plural, one {محادثة واحدة} other {# محادثات}}',
+  'agents.description': 'الوصف',
+  'agents.descriptionAr': 'الوصف (بالعربية)',
+  'agents.systemPrompt': 'التوجيه الأساسي',
+  'agents.active': 'نشط',
+  'agents.inactive': 'غير نشط',
+  'agents.builtInNote': 'وكيل مدمج — لا يمكن حذفه',
+  'agents.deleteConfirm': 'هل أنت متأكد من حذف هذا الوكيل؟',
 
   // Search
   'search.title': 'البحث',
   'search.placeholder': 'البحث في جميع المحادثات والمهام والوكلاء...',
   'search.noResults': 'لم يتم العثور على نتائج',
+  'search.hint': 'ابحث في المحادثات والمهام والوكلاء والنصوص',
+  'search.transcripts': 'النصوص',
 
   // Auth
   'auth.signIn': 'تسجيل الدخول بحساب حكومة أبوظبي',
@@ -190,11 +270,35 @@ const ar: MessageMap = {
 
   // Settings
   'settings.title': 'الإعدادات',
+  'settings.profile': 'الملف الشخصي',
+  'settings.appearance': 'المظهر',
   'settings.language': 'اللغة',
   'settings.theme': 'المظهر',
   'settings.theme.light': 'فاتح',
   'settings.theme.dark': 'داكن',
   'settings.theme.system': 'النظام',
+  'settings.audio': 'الصوت',
+  'settings.defaultMicrophone': 'الميكروفون الافتراضي',
+  'settings.systemDefault': 'الافتراضي للنظام',
+  'settings.systemAudio': 'التقاط صوت النظام',
+  'settings.systemAudioEnabled': 'متاح (سطح المكتب فقط)',
+  'settings.systemAudioUnavailable': 'غير متاح في المعاينة',
+  'settings.hotkeys': 'اختصارات لوحة المفاتيح',
+  'settings.hotkeysDesc': 'Cmd+Shift+R (تسجيل) · Cmd+Shift+P (خصوصية) · Cmd+Shift+A (سؤال سريع)',
+  'settings.about': 'حول التطبيق',
+  'settings.version': 'الإصدار {version}',
+
+  // Analytics
+  'analytics.totalConversations': 'إجمالي المحادثات',
+  'analytics.totalHours': 'ساعات التسجيل',
+  'analytics.uniqueSpeakers': 'المتحدثون',
+  'analytics.tasksExtracted': 'المهام المستخرجة',
+  'analytics.weeklyActivity': 'النشاط الأسبوعي',
+  'analytics.topSpeakers': 'أبرز المتحدثين',
+  'analytics.languageBreakdown': 'استخدام اللغة',
+  'analytics.taskCompletion': 'إنجاز المهام',
+  'analytics.completionRate': 'نسبة الإنجاز',
+  'analytics.changeUp': '+{pct}% هذا الشهر',
 
   // Common
   'common.loading': 'جارٍ التحميل...',

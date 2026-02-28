@@ -107,7 +107,7 @@ export type AppLocale = 'ar' | 'en';
 
 export type ThemeMode = 'light' | 'dark' | 'system';
 
-export type NavigationTab = 'home' | 'conversations' | 'tasks' | 'agents' | 'search';
+export type NavigationTab = 'home' | 'conversations' | 'tasks' | 'agents' | 'search' | 'settings';
 
 // ─── Auth Types ───
 

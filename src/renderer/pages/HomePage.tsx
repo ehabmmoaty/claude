@@ -3,8 +3,9 @@ import { useIntl } from 'react-intl';
 import { useAppStore } from '../stores/appStore';
 import { useConversationsStore } from '../stores/conversationsStore';
 import { fetchRecentConversations } from '../services/conversationService';
-import { Calendar, Mic, MessageSquare, CheckSquare, Clock, ChevronRight } from 'lucide-react';
+import { Calendar, Mic, MessageSquare, CheckSquare, Clock, ChevronRight, BarChart3 } from 'lucide-react';
 import type { Conversation } from '../../shared/types';
+import { AnalyticsSection } from './AnalyticsPage';
 
 function formatDuration(seconds: number): string {
   const m = Math.floor(seconds / 60);
@@ -42,7 +43,7 @@ export function HomePage() {
   };
 
   return (
-    <div className="mx-auto max-w-4xl px-6 py-8">
+    <div className="mx-auto max-w-5xl px-6 py-8">
       {/* Welcome */}
       <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
         {intl.formatMessage({ id: 'home.welcome' }, { name: user?.displayName?.split(' ')[0] })}
@@ -150,6 +151,15 @@ export function HomePage() {
             ))}
           </div>
         )}
+      </section>
+
+      {/* Insights / Analytics */}
+      <section className="mt-8">
+        <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-gray-200">
+          <BarChart3 className="h-5 w-5" />
+          {intl.formatMessage({ id: 'home.insights' })}
+        </h2>
+        <AnalyticsSection />
       </section>
     </div>
   );

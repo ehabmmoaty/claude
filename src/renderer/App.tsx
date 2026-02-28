@@ -11,6 +11,7 @@ import { ConversationsPage } from './pages/ConversationsPage';
 import { TasksPage } from './pages/TasksPage';
 import { AgentsPage } from './pages/AgentsPage';
 import { SearchPage } from './pages/SearchPage';
+import { SettingsPage } from './pages/SettingsPage';
 import { electron, isElectron } from './lib/electron';
 import { MOCK_USER } from './lib/webPreviewData';
 
@@ -20,6 +21,7 @@ const PAGES = {
   tasks: TasksPage,
   agents: AgentsPage,
   search: SearchPage,
+  settings: SettingsPage,
 } as const;
 
 export default function App() {

@@ -79,7 +79,12 @@ export function Sidebar() {
           <span>{locale === 'en' ? 'العربية' : 'English'}</span>
         </button>
         <button
-          className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800"
+          onClick={() => setActiveTab('settings')}
+          className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+            activeTab === 'settings'
+              ? 'bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300'
+              : 'text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800'
+          }`}
           aria-label="Settings"
         >
           <Settings className="h-5 w-5 shrink-0" />
