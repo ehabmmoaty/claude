@@ -2,7 +2,7 @@
   "name": "anees-desktop",
   "version": "0.1.0",
   "description": "Anees AI Companion — Desktop Application for Abu Dhabi Government",
-  "main": "dist/main/index.js",
+  "main": "dist/main/main/index.js",
   "scripts": {
     "dev": "concurrently \"npm run dev:main\" \"npm run dev:renderer\"",
     "dev:main": "tsc -p tsconfig.main.json --watch & electron .",
